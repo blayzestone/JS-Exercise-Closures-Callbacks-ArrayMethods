@@ -201,8 +201,9 @@ function isItAnApple(stringsArray) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
-  /* code here */
+function removeApple(stringsArray) {
+  const appleFreeArray = stringsArray.filter(element => element !== "apple");
+  return appleFreeArray;
 }
 
 /**
