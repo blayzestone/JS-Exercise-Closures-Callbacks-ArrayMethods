@@ -326,7 +326,7 @@ function tallyUpDonations(runnersArray) {
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
  * 
- *  'counter1' would be better when you want to avoid adding variables to the global scope. 'counter2' would be better when you have a code base that has a global variable you need to modify.
+ *  'counter1' would be better when you want to avoid adding variables to the global scope and if you want to create multiple counters with their own counts. 'counter2' would be better when you need to count a single variable that multiple functions need to access. It is best practice to avoid global variables.
  *
 */
 
