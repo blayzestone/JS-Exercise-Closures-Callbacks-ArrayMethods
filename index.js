@@ -135,8 +135,9 @@ function processProduct(num1, num2, cb) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  const noDuplicatesList = list.filter((element, i, arr) => i === arr.indexOf(element) );
+  return callback(noDuplicatesList);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -282,8 +283,10 @@ function firstNamesAllCaps(runners) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  const runnersOfTShirtSize = runners.filter((runner) => tShirtSize === runner.shirt_size);
+
+  return runnersOfTShirtSize;
 }
 
 /**
@@ -297,8 +300,10 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runnersArray) {
+  const totalDonations = runnersArray.reduce((accumulator, runner) => accumulator + runner.donation, 0);
+
+  return totalDonations;
 }
 
 /////////////// CLOSURES ///////////////
@@ -316,7 +321,7 @@ function tallyUpDonations(/* CODE HERE */) {
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
- *  counter1 uses a closure. You can tell because when you console log the count variable (declared inside the function's scope) it remembers the value from the last invocation of the function.
+ *  counter1 uses a closure. You can tell because when you console log the count variable (declared inside the function's scope) it remembers the value from the last invocation of the function. This is because the return function is lexically bound to the execution context of its parent. Thus the value of the count variable is remembered.
  *  The reason counter2 does not use a closure is simply because it increments a global variable.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
@@ -363,9 +368,19 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(maxVal) {
+  let count = 0;
+  return function counter() {
+    if (count > maxVal) {
+      count = 0;
+    }
+    return count++;
+  }
 }
+
+const limitCounter = counterMakerWithLimit(3);
+
+
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
